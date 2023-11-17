@@ -3,4 +3,8 @@
     <string name="nama">Nama Mahasiswa</string>
     <string name="nim">NIM</string>
     <string name="judul">Judul Skripsi</string>
+    <string name="haris">Haris Setiawan</string>
+    <string name="joko">Dwi Joko</string>
+    <string name="aprillia">Aprillia</string>
+    <string name="next">Lanjut</string>
 </resources>
