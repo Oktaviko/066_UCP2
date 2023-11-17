@@ -4,5 +4,6 @@ data class OrderUIState(
     val nama :String = "",
     val nim : String = "",
     val judul : String = "",
-    val konsen : String = ""
+    val konsen : String = "",
+    val dosen : String = ""
 )

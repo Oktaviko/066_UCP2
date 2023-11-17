@@ -13,6 +13,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -21,6 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.exercise2.data.DataSource.dosen
 
 enum class PengelolaHalaman {
     Home,
@@ -71,5 +73,25 @@ fun SkripsiApp(
             navController = navController,
             startDestination = PengelolaHalaman.Home.name,
             modifier = Modifier.padding(innerPadding))
+        {
+            composable(route = PengelolaHalaman.Home.name) {
+                HalamanHome(
+                    onNextButtonClicked = {navController.navigate(PengelolaHalaman.Form.name)}
+                )
+            }
+            composable(route = PengelolaHalaman.Form.name){
+                HalamanForm(
+                    pilihanDosen = dosen.map{ id -> context.resources.getString(id)},
+                    onSelectionChanged =  { viewModel.setDosen(it)},
+                    onSubmitButtonClick = { navController.navigate(PengelolaHalaman.Summary.name) })
+            }
+        }
     }
+}
+
+private fun cancelOrderAndNavigateToForm(
+    viewModel: OrderViewModel,
+    navController: NavHostController
+){
+    navController.popBackStack(PengelolaHalaman.Form.name, inclusive = false)
 }

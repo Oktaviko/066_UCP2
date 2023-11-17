@@ -12,6 +12,11 @@ class OrderViewModel : ViewModel(){
     val stateUI : StateFlow<OrderUIState> = _stateUI.asStateFlow()
 
 
+    fun setDosen(dosenPilihan: String) {
+        _stateUI.update { stateSaatIni ->
+            stateSaatIni.copy(dosen = dosenPilihan)
+        }
+    }
     fun setContact(listData : MutableList<String>){
         _stateUI.update { stateSaatIni ->
             stateSaatIni.copy(
