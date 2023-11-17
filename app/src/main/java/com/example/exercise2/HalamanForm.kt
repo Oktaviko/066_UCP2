@@ -30,8 +30,10 @@ import com.example.exercise2.ui.theme.Exercise2Theme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HalamanForm(
-    pilihanDosen: List<String>,
-    onSelectionChanged: (String) -> Unit,
+    pilihanDosen1: List<String>,
+    pilihandDosen2:  List<String>,
+    onSelectionChanged1: (String) -> Unit,
+    onSelectionChanged2: (String) -> Unit,
     onSubmitButtonClick: (MutableList<String>)-> Unit,
     modifier : Modifier = Modifier
 ){
@@ -93,20 +95,20 @@ fun HalamanForm(
                     modifier = Modifier
                 ){
                     Text(text = "Dosen Pembimbing 1")
-                    pilihanDosen.forEach { item ->
+                    pilihanDosen1.forEach { item ->
                         Row(
                             modifier = Modifier.selectable(
                                 selected = dosenYgDipilih == item,
                                 onClick = {
                                     dosenYgDipilih = item
-                                    onSelectionChanged(item)
+                                    onSelectionChanged1(item)
                                 }
                             ),
                             verticalAlignment = Alignment.CenterVertically
                         ){
                             RadioButton(selected = dosenYgDipilih == item, onClick = {
                                 dosenYgDipilih = item
-                                onSelectionChanged(item)
+                                onSelectionChanged1(item)
                             })
                             Text(item)
                         }
@@ -116,25 +118,26 @@ fun HalamanForm(
                     modifier = Modifier
                 ){
                     Text(text = "Dosen Pembimbing 2")
-                    pilihanDosen.forEach { item ->
+                    pilihandDosen2.forEach { item ->
                         Row(
                             modifier = Modifier.selectable(
                                 selected = dosenYgDipilih == item,
                                 onClick = {
                                     dosenYgDipilih = item
-                                    onSelectionChanged(item)
+                                    onSelectionChanged2(item)
                                 }
                             ),
                             verticalAlignment = Alignment.CenterVertically
                         ){
                             RadioButton(selected = dosenYgDipilih == item, onClick = {
                                 dosenYgDipilih = item
-                                onSelectionChanged(item)
+                                onSelectionChanged2(item)
                             })
                             Text(item)
                         }
                     }
                 }
+
             }
         }
     }
