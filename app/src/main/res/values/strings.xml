@@ -7,4 +7,6 @@
     <string name="joko">Dwi Joko</string>
     <string name="aprillia">Aprillia</string>
     <string name="next">Lanjut</string>
+    <string name="submit">Submit</string>
+    <string name="back_button">Kembali</string>
 </resources>
