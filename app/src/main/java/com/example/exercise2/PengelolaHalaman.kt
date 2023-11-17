@@ -24,7 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.exercise2.data.DataSource.dosen1
 import com.example.exercise2.data.DataSource.dosen2
-import kotlin.coroutines.jvm.internal.CompletedContinuation.context
+
 
 
 enum class PengelolaHalaman {
@@ -83,13 +83,14 @@ fun SkripsiApp(
                 )
             }
             composable(route = PengelolaHalaman.Form.name){
+                val context = LocalContext.current
                HalamanForm(
                    pilihanDosen1 = dosen1.map{ id -> context.resources.getString(id)},
-                   pilihandDosen2 = dosen2.map{ id -> context.resources.getString(id)},,
+                   pilihandDosen2 = dosen2.map{ id -> context.resources.getString(id)},
                    onSelectionChanged1 = {viewModel.setDosen1(it)},
                    onSelectionChanged2 = {viewModel.setDosen1(it)},
                    onSubmitButtonClick = {viewModel.setContact(it)
-                   navController.navigate(PengelolaHalaman.Summary)}
+                   navController.navigate(PengelolaHalaman.Summary.name)}
                )
             }
         }
